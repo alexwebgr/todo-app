@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
+  get 'sessions/register'
+  post 'sessions/do_register'
   resources :user_todo_lists
   resources :todos
   resources :todo_lists
