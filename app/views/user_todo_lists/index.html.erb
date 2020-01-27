@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Todo Lists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Todo list</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_todo_lists.each do |user_todo_list| %>
+      <tr>
+        <td><%= user_todo_list.user_id %></td>
+        <td><%= user_todo_list.todo_list_id %></td>
+        <td><%= link_to 'Show', user_todo_list %></td>
+        <td><%= link_to 'Edit', edit_user_todo_list_path(user_todo_list) %></td>
+        <td><%= link_to 'Destroy', user_todo_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Todo List', new_user_todo_list_path %>

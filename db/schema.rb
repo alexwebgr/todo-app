@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_27_193444) do
+ActiveRecord::Schema.define(version: 2020_01_27_194428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2020_01_27_193444) do
     t.index ["todo_list_id"], name: "index_todos_on_todo_list_id"
   end
 
+  create_table "user_todo_lists", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "todo_list_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["todo_list_id"], name: "index_user_todo_lists_on_todo_list_id"
+    t.index ["user_id"], name: "index_user_todo_lists_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "full_name"
@@ -38,4 +47,6 @@ ActiveRecord::Schema.define(version: 2020_01_27_193444) do
   end
 
   add_foreign_key "todos", "todo_lists"
+  add_foreign_key "user_todo_lists", "todo_lists"
+  add_foreign_key "user_todo_lists", "users"
 end
