@@ -16,12 +16,13 @@
         <%= render 'shared/flash' %>
       <% end %>
     </div>
-    <div class="container">
+    <div class="container mt-5 pt-3">
       <div class="row">
         <div class="col">
           <%= yield %>
         </div>
       </div>
     </div>
+    <%= render 'shared/modal_create_todo' %>
   </body>
 </html>

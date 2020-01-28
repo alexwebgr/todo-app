@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   get 'dashboard/index'
+  get 'dashboard/create_todo'
+  post 'dashboard/do_create_todo'
+  delete 'dashboard/destroy_todo'
+  get 'dashboard/toggle_completed'
   get 'sessions/register'
   post 'sessions/do_register'
   resources :user_todo_lists

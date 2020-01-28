@@ -1,0 +1,7 @@
+var todo = $('#todos [data-todo-id="<%= params[:todo_id] %>"]');
+
+if (todo.length) {
+    todo.replaceWith("<%= j render partial: 'dashboard/todo', locals: { todo: @todo, list_id: @todo.todo_list_id } %>");
+} else {
+    $('#todos').append("<%= j render partial: 'dashboard/todo', locals: { todo: @todo, list_id: @todo.todo_list_id } %>");
+}

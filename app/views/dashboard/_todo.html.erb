@@ -1,0 +1,23 @@
+<%= content_tag :li, class: 'list-group-item list-group-item-action list-group-item-light border-0 my-2 ml-1', data: {'todo-id': todo.id} do %>
+  <div class="d-flex">
+    <%= link_to dashboard_toggle_completed_path(list_id: list_id, todo_id: todo.id), class: 'mr-2', remote: true do %>
+      <% if todo.completed? %>
+        <%= faw_icon 'solid', 'check-square', { extra_class: 'ttd-svg-success', size: '2x' } %>
+      <% else %>
+        <%= faw_icon 'regular', 'square', { extra_class: 'ttd-svg-secondary', size: '2x' } %>
+      <% end %>
+    <% end %>
+
+    <% if todo.completed? %>
+      <del class="font-weight-bold pt-1"><%= todo.content %></del>
+    <% else %>
+      <span class="text-dark font-weight-bold pt-1">
+        <%= todo.content %>
+      </span>
+    <% end %>
+
+    <%= link_to dashboard_destroy_todo_path(list_id: list_id, todo_id: todo.id), class: 'ml-auto ttd-button-hide', remote: true, data: {method: :delete} do %>
+      <%= faw_icon 'light', 'trash-alt', { extra_class: 'ttd-svg-primary', size: '2x' } %>
+    <% end %>
+  </div>
+<% end %>

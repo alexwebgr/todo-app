@@ -1,0 +1,27 @@
+.ttd-box-shadow {
+  box-shadow: inset 3px 0px 3px 2px rgba(108,117,125,0.48);
+}
+
+.ttd-bg-grey {
+  background: $gray-400;
+}
+
+.ttd-button-hide {
+  display: none;
+}
+
+li:hover > div > .ttd-button-hide {
+  display: block;
+}
+
+.ttd-todo-list-selected {
+  @extend .list-group-item-light.list-group-item-action:hover;
+}
+
+.title-holder {
+  position: absolute;
+  color: $white;
+  font-weight: bold;
+  bottom: 5px;
+  left: 20px;
+}

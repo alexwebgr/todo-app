@@ -1,0 +1,11 @@
+<%= form_with(model: Todo.new, url: dashboard_do_create_todo_path, remote: true) do |form| %>
+  <%= form.hidden_field :todo_list_id, value: list_id %>
+  <div class="form-group">
+    <%= form.label :content %>
+    <%= form.text_field :content, class: 'form-control', required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Create', class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -1,21 +1,36 @@
-<div class="row">
-  <div class="col-4">
+<div class="row mb-3">
+  <div class="col-4 pt-2">
     <div class="media">
       <%= image_tag current_user.avatar, class: 'align-self-center mr-3 rounded-circle',  size: "47x47"  %>
       <div class="media-body">
-        <h5 class="mt-2"><%= current_user.full_name %></h5>
+        <h5 class="mt-2 text-dark"><%= current_user.full_name %></h5>
       </div>
     </div>
 
-    <div class="list-group">
-      <% current_user.todo_lists.each do |tl| %>
-        <a href="#" class="list-group-item list-group-item-action">
-          <%= tl.label %>
-        </a>
-      <% end %>
+    <div class="list-group mt-5">
+      <%= render partial: 'dashboard/todo_list', collection: current_user.todo_lists.order(created_at: :ASC) %>
     </div>
   </div>
-  <div class="col">
 
+  <div class="col-6 ttd-box-shadow p-0 pl-1">
+    <div class="position-relative">
+      <%= image_tag 'rocks_m.jpg', class: 'img-fluid' %>
+      <div class="title-holder">
+        <h4><%= @todo_list.label %></h4>
+        <p><%= Time.current.strftime('%a %d %B') %></p>
+      </div>
+    </div>
+
+    <ul class="list-group mt-2" id="todos">
+      <%= render partial: 'dashboard/todo', collection: @todos.order(created_at: :ASC), locals: { list_id: params[:list_id] } %>
+    </ul>
+
+    <div class="ttd-bg-grey pb-5 pt-2 pl-3">
+      <%= link_to dashboard_create_todo_path(list_id: params[:list_id]), class: 'font-weight-bold text-decoration-none', remote: true do %>
+        <%= faw_icon 'solid', 'plus-circle', { extra_class: 'ttd-svg-primary float-left', size: '2x' }  %>
+        <div class="float-left mt-1 ml-2">Add a to-do</div>
+      <% end %>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </div>

@@ -1,0 +1,7 @@
+var ttdCreateTodoModal = $("#ttd-create-todo-modal");
+
+ttdCreateTodoModal
+    .find(".ttd-create-todo-modal-form")
+    .html("<%= j render partial: 'dashboard/create_todo_form', locals: { list_id: params[:list_id] } %>");
+
+ttdCreateTodoModal.modal();
