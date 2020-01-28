@@ -19,7 +19,7 @@ class DashboardController < ApplicationController
         format.js
       else
         format.js do
-          flash[:danger] = @todo.errors.full_messages
+          flash.now[:danger] = @todo.errors.full_messages
           render partial: 'shared/flash_renderer', status: :unprocessable_entity
         end
       end
@@ -32,6 +32,11 @@ class DashboardController < ApplicationController
 
   def toggle_completed
     @todo.update_attribute(:completed, !@todo.completed)
+  end
+
+  def assign_user
+    session[:current_user_id] = params[:user_id] if params[:user_id]
+    redirect_to dashboard_index_path
   end
 
   private

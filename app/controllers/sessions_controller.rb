@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         end
       else
         format.js do
-          flash[:danger] = @user.errors.full_messages
+          flash.now[:danger] = @user.errors.full_messages
           render partial: 'shared/flash_renderer', status: :unprocessable_entity
         end
       end

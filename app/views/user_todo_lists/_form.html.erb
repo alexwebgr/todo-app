@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.collection_select(:user_id, User.all, :id, :full_name, {include_blank: true}, {'data-placeholder': 'Please select...'}) %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :todo_list_id %>
-    <%= form.text_field :todo_list_id %>
+    <%= form.collection_select(:todo_list_id, TodoList.all, :id, :label, {include_blank: true}, {'data-placeholder': 'Please select...'}) %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

@@ -8,7 +8,9 @@
     </div>
 
     <div class="list-group mt-5">
-      <%= render partial: 'dashboard/todo_list', collection: current_user.todo_lists.order(created_at: :ASC) %>
+      <% if current_user.todo_lists.any? %>
+        <%= render partial: 'dashboard/todo_list', collection: current_user.todo_lists.order(created_at: :ASC) %>
+      <% end %>
     </div>
   </div>
 
@@ -16,19 +18,23 @@
     <div class="position-relative">
       <%= image_tag 'rocks_m.jpg', class: 'img-fluid' %>
       <div class="title-holder">
-        <h4><%= @todo_list.label %></h4>
+        <h4><%= @todo_list.label if @todo_list %></h4>
         <p><%= Time.current.strftime('%a %d %B') %></p>
       </div>
     </div>
 
     <ul class="list-group mt-2" id="todos">
-      <%= render partial: 'dashboard/todo', collection: @todos.order(created_at: :ASC), locals: { list_id: params[:list_id] } %>
+      <% if @todos.any? %>
+        <%= render partial: 'dashboard/todo', collection: @todos.order(created_at: :ASC), locals: { list_id: params[:list_id] } %>
+      <% end %>
     </ul>
 
     <div class="ttd-bg-grey pb-5 pt-2 pl-3">
-      <%= link_to dashboard_create_todo_path(list_id: params[:list_id]), class: 'font-weight-bold text-decoration-none', remote: true do %>
-        <%= faw_icon 'solid', 'plus-circle', { extra_class: 'ttd-svg-primary float-left', size: '2x' }  %>
-        <div class="float-left mt-1 ml-2">Add a to-do</div>
+      <% if @todo_list %>
+        <%= link_to dashboard_create_todo_path(list_id: params[:list_id]), class: 'font-weight-bold text-decoration-none', remote: true do %>
+          <%= faw_icon 'solid', 'plus-circle', { extra_class: 'ttd-svg-primary float-left', size: '2x' }  %>
+          <div class="float-left mt-1 ml-2">Add a to-do</div>
+        <% end %>
       <% end %>
       <div class="clearfix"></div>
     </div>
