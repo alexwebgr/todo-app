@@ -10,6 +10,16 @@
     <%= form.text_field :full_name, class: 'form-control', placeholder: :full_name, required: true %>
   </div>
 
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroupFileAddon01">Avatar</span>
+    </div>
+    <div class="custom-file">
+      <%= form.label :avatar, class: 'custom-file-label', for: 'inputGroupFile01'  %>
+      <%= form.file_field :avatar, class: 'custom-file-input', id: 'inputGroupFile01' %>
+    </div>
+  </div>
+
   <div class="actions">
     <%= form.submit 'Register', class: 'btn btn-primary' %>
   </div>

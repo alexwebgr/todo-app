@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-4">
+    <div class="media">
+      <%= image_tag current_user.avatar, class: 'align-self-center mr-3 rounded-circle',  size: "47x47"  %>
+      <div class="media-body">
+        <h5 class="mt-2"><%= current_user.full_name %></h5>
+      </div>
+    </div>
+
+    <div class="list-group">
+      <% current_user.todo_lists.each do |tl| %>
+        <a href="#" class="list-group-item list-group-item-action">
+          <%= tl.label %>
+        </a>
+      <% end %>
+    </div>
+  </div>
+  <div class="col">
+
+  </div>
+</div>

@@ -4,4 +4,5 @@ class User < ApplicationRecord
 
   has_many :user_todo_lists, dependent: :destroy
   has_many :todo_lists, through: :user_todo_lists
+  has_one_attached :avatar
 end

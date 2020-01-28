@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       else
         format.js do
           flash[:danger] = @user.errors.full_messages
-          render partial: 'shared/flash_renderer'
+          render partial: 'shared/flash_renderer', status: :unprocessable_entity
         end
       end
     end
@@ -24,6 +24,6 @@ class SessionsController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :full_name)
+      params.require(:user).permit(:email, :full_name, :avatar)
     end
 end
