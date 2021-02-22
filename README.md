@@ -3,7 +3,7 @@ A simple todo app using rails 6 with image upload and basic todo management.
 Users can be added to multiple lists.
 
 ### Features
-* Ruby 2.6.3
+* Ruby 2.7.0
 * Rails 6
 * Postgres
 * Encrypted credentials
